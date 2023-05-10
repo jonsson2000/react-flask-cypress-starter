@@ -17,10 +17,9 @@ describe("example to-do app", () => {
     // so we must tell it to visit our website with the `cy.visit()` command.
     // Since we want to visit the same URL at the start of all our tests,
     // we include it in our beforeEach function so that it runs before each test
-    const urlToVisit =
-      Cypress.env("BASE_URL") +
-      ("?shipyard_token=" + Cypress.env("BYPASS_TOKEN"));
+    const urlToVisit = "/" + "?shipyard_token=" + Cypress.env("BYPASS_TOKEN");
     cy.log("url to visit", urlToVisit);
+    cy.log("BASE_URL", Cypress.env("BASE_URL"));
     cy.visit(urlToVisit);
   });
 
