@@ -22,5 +22,6 @@ jobs:
         run: |
           export CYPRESS_BASE_URL=${SHIPYARD_ENVIRONMENT_URL}
           export CYPRESS_BYPASS_TOKEN=${SHIPYARD_BYPASS_TOKEN}
+          env | grep -e SHIPYARD -e CYPRESS
       - name: Run Cypress test
         run: npx cypress run --browser chrome
