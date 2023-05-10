@@ -27,6 +27,6 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           browser: chrome
-          env:
-            CYPRESS_BASE_URL: ${SHIPYARD_ENVIRONMENT_URL}
-            CYPRESS_BYPASS_TOKEN: ${SHIPYARD_BYPASS_TOKEN}
+        env:
+          CYPRESS_BASE_URL: ${SHIPYARD_ENVIRONMENT_URL}
+          CYPRESS_BYPASS_TOKEN: ${SHIPYARD_BYPASS_TOKEN}
