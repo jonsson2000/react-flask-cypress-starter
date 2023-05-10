@@ -3,13 +3,24 @@ on: [push]
 jobs:
   cypress:
     runs-on: ubuntu-latest
+    name: Run Cypress
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Install Node.js
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
       - name: Install dependencies
         run: npm install
+      - name: Fetch Shipyard Environment
+        uses: shipyard/github-action/fetch-shipyard-env@1.0.0
+        with:
+          api-token: ${{ secrets.SHIPYARD_API_TOKEN }}
+          timeout-minutes: "10"
+      - name: Export Shipyard ENV Vars
+        run: |
+          export CYPRESS_BASE_URL=${SHIPYARD_ENVIRONMENT_URL}
+          export CYPRESS_BYPASS_TOKEN=${SHIPYARD_BYPASS_TOKEN}
       - name: Run Cypress test
         run: npx cypress run --browser chrome
