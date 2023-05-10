@@ -18,11 +18,6 @@ jobs:
         with:
           api-token: ${{ secrets.SHIPYARD_API_TOKEN }}
           timeout-minutes: "10"
-      - name: Export Shipyard ENV Vars
-        run: |
-          export CYPRESS_BASE_URL=${SHIPYARD_ENVIRONMENT_URL}
-          export CYPRESS_BYPASS_TOKEN=${SHIPYARD_BYPASS_TOKEN}
-          env | grep -e SHIPYARD -e CYPRESS
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
