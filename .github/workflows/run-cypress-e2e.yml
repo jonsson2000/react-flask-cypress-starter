@@ -28,5 +28,5 @@ jobs:
         with:
           browser: chrome
         env:
-          CYPRESS_BASE_URL: ${SHIPYARD_ENVIRONMENT_URL}
-          CYPRESS_BYPASS_TOKEN: ${SHIPYARD_BYPASS_TOKEN}
+          CYPRESS_BASE_URL: ${{env.SHIPYARD_ENVIRONMENT_URL}}
+          CYPRESS_BYPASS_TOKEN: ${{env.SHIPYARD_BYPASS_TOKEN}}
