@@ -1,5 +1,5 @@
 # The base Docker image which is used as a foundation
-FROM node:12-alpine
+FROM node:14-alpine
 
 # The default working directory for the image
 WORKDIR /app
