@@ -16,7 +16,10 @@ jobs:
       - name: Fetch Shipyard Environment
         uses: shipyard/github-action/fetch-shipyard-env@1.0.0
         with:
+          # Your Shipyard Org API token
+          # Add to your GitHub Secrets
           api-token: ${{ secrets.SHIPYARD_API_TOKEN }}
+          # How long to wait for the environment
           timeout-minutes: "10"
       - name: Cypress run
         uses: cypress-io/github-action@v5
