@@ -1,0 +1,30 @@
+on: [push]
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    name: Run Cypress
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm install
+      - name: Fetch Shipyard Environment
+        uses: shipyard/github-action/fetch-shipyard-env@1.0.0
+        with:
+          # Your Shipyard Org API token
+          # Add to your GitHub Secrets
+          api-token: ${{ secrets.SHIPYARD_API_TOKEN }}
+          # How long to wait for the environment
+          timeout-minutes: "10"
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+        env:
+          CYPRESS_BASE_URL: ${{env.SHIPYARD_ENVIRONMENT_URL}}
+          CYPRESS_BYPASS_TOKEN: ${{env.SHIPYARD_BYPASS_TOKEN}}
